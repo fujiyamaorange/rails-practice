@@ -1,8 +1,8 @@
-require './menu.rb'
+require './drink.rb'
 
-ayataka = Menu.new(name: '綾鷹', price: 150)
-iemon = Menu.new(name: '伊右衛門', price: 200)
-namacha = Menu.new(name: '生茶', price: 100)
+ayataka = Drink.new(name: '綾鷹', price: 80, amount: 525)
+iemon = Drink.new(name: '伊右衛門', price: 140, amount: 525)
+namacha = Drink.new(name: '生茶', price: 140, amount: 535)
 
 ochas = [ayataka, iemon, namacha]
 
