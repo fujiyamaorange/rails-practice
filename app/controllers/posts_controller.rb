@@ -9,6 +9,7 @@ class PostsController < ApplicationController
   end
 
   def new
+    @post = Post.new
   end
 
   def edit
@@ -18,24 +19,40 @@ class PostsController < ApplicationController
   def create
     # POSTで渡ってきたデータをデータベースに保存しリダイレクトする
     # 変数名は@なしでもいける
-    @new_post = Post.new(content: params[:content]) 
-    @new_post.save
+    @post = Post.new(content: params[:content]) 
+    
+    if @post.save
+      flash[:notice] = "新規投稿できました"
+      redirect_to("/posts/index")
+    else
+      # URLはposts/createだけどrenderしているので中身はposts/new
+      render("posts/new")
+    end
 
-    redirect_to("/posts/index")
+    
   end
 
   def update
-    @update_post = Post.find_by(id: params[:id])
-    @update_post.content = params[:content]
-    @update_post.save
+    # editページ→updateアクション→editページ or indexページ
+    # なのでeditページで使う変数名と同じにした方が良い→@post
+    @post = Post.find_by(id: params[:id])
+    @post.content = params[:content]
 
-    redirect_to("/posts/index")
+    if @post.save
+      flash[:notice] = "投稿を編集しました"
+      redirect_to("/posts/index")
+    else
+      render("posts/edit")
+    end
+    
+
   end
 
   def delete
     @delete_post = Post.find_by(id: params[:id])
     @delete_post.destroy
     
+    flash[:notice] = "投稿を削除しました"
     redirect_to("/posts/index")
   end
 end
