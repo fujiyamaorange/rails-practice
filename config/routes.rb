@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   get 'posts/index'
   get 'posts/new' => 'post@new'
   get 'posts/:id' => 'posts#show'
+  get 'posts/:id/edit' => 'posts#edit'
+  post 'posts/:id/update' => 'posts#update'
+  post 'posts/:id/delete' => 'posts#delete'
+
   get '/' => 'home#top'
   
   get 'home/top'
