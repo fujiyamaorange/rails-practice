@@ -10,6 +10,12 @@
   </head>
 
   <body>
+  <!-- flash[:notice]に代入されたメッセージを表示してください -->
+    <% if flash[:notice] %>
+      <div class="flash">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
   <header>
     <div class="header-logo">
       <%= link_to("TweetApp", '/') %>
