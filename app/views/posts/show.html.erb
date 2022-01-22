@@ -8,6 +8,7 @@
       </div>
       <div class="post-menus">
         <%= link_to("編集", "/posts/#{@post.id}/edit") %>
+        <%# link_toを使ってPOSTを行う %>
         <%= link_to("削除", "/posts/#{@post.id}/delete", {method: 'post'}) %>
       </div>
     </div>
