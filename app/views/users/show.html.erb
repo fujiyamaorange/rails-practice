@@ -5,8 +5,10 @@
       <p><%= @user.email %></p>
       <img src="<%= "/user_images/#{@user.image_name}" %>" alt="user image">
     </div>
-    <div class="user-menus">
-        <%= link_to("編集", "/users/#{@user.id}/edit") %>
+    <% if @user.id == @current_user.id%>
+      <div class="user-menus">
+          <%= link_to("編集", "/users/#{@user.id}/edit") %>
+        </div>
       </div>
-  </div>
+    <% end %>
 </div>
