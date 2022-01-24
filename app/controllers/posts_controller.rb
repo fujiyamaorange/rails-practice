@@ -8,6 +8,7 @@ class PostsController < ApplicationController
   def show
     # paramsから取得できる
     @post = Post.find_by(id: params[:id])
+    @user = @post.user
   end
 
   def new
@@ -21,7 +22,7 @@ class PostsController < ApplicationController
   def create
     # POSTで渡ってきたデータをデータベースに保存しリダイレクトする
     # 変数名は@なしでもいける
-    @post = Post.new(content: params[:content]) 
+    @post = Post.new(content: params[:content], user_id: @current_user.id) 
     
     if @post.save
       flash[:notice] = "新規投稿できました"
