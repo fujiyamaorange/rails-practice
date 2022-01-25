@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'users/:id'=> 'users#show'
   get 'users/:id/edit' => 'users#edit'
   post 'users/:id/update' => 'users#update'
+  get 'users/:id/likes' => 'users#likes'
   get 'posts/index' => 'posts#index'
   get 'posts/new' => 'posts#new'
   get 'posts/:id' => 'posts#show'
@@ -26,5 +27,8 @@ Rails.application.routes.draw do
   post 'posts/create' => 'posts#create'
 
   post 'users/create' => 'users#create'
+
+  post 'likes/:post_id/create' => 'likes#create'
+  post 'likes/:post_id/delete' => 'likes#delete'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -10,6 +10,8 @@ class PostsController < ApplicationController
     # paramsから取得できる
     @post = Post.find_by(id: params[:id])
     @user = @post.user
+    @is_liked = Like.find_by(user_id: @current_user.id, post_id: @post.id)
+    @likes_count = Like.where(post_id: @post.id).count
   end
 
   def new
