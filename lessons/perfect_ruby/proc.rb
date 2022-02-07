@@ -8,3 +8,8 @@ puts p2.call('hi')
 people = %w(Alice Bob Carol)
 # container.map(&:method_name)でメソッドを呼ぶことができる
 puts people.map(&:upcase)
+
+# putsをgreetで呼び出せるようにする
+alias greet puts
+
+greet 'hi'
