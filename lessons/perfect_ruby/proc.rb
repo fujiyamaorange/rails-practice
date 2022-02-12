@@ -13,3 +13,19 @@ puts people.map(&:upcase)
 alias greet puts
 
 greet 'hi'
+
+def what_class(obj)
+  case obj
+  # 式の実行と条件分岐を同時にしてくれる
+  when proc {|x| x.kind_of? String}
+    String
+  when proc {|x| x.kind_of? Numeric}
+    Numeric
+  else
+    Class
+  end
+end
+
+puts what_class "string"
+puts what_class 1
+puts what_class []
